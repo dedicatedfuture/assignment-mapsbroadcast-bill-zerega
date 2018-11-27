@@ -33,7 +33,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private LatLng currentLatLng;
     private MapFragment mapFragment;
     private Marker currentMapMarker;
-    private GoogleMap mGoogleMap;
+
 
     //broadcast receiver
     private IntentFilter intentFilter = null;
@@ -75,12 +75,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         Intent intent = getIntent();
-        Double latiude = intent.getDoubleExtra("LATITUDE", Double.NaN);
-        Double longitude = intent.getDoubleExtra("LONGITUDE", Double.NaN);
-        String location = intent.getStringExtra("LOCATION");
+        Double latitude = intent.getDoubleExtra("Latitude", Double.NaN);
+        Double longitude = intent.getDoubleExtra("Longitude", Double.NaN);
+        String location = intent.getStringExtra("Location");
 
 
-        currentLatLng = new LatLng(latiude, longitude);
+        currentLatLng = new LatLng(latitude, longitude);
 
         googleMap.addMarker(new MarkerOptions()
                 .position(currentLatLng)
@@ -90,6 +90,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapCameraConfiguration(googleMap);
         useMapClickListener(googleMap);
         useMarkerClickListener(googleMap);
+        createMarkersFromFirebase(googleMap);
     }
 
 
