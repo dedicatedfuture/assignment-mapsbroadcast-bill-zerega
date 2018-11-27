@@ -39,7 +39,10 @@ public class MapBroadcastReceiver extends BroadcastReceiver {
             " hemisphere, with the coordinates (lat, lng): " + Double.toString(latitude) + ", " +
                     Double.toString(longitude));
 
+            notificationManager.createNotificationChannel(getNotificationChannel());
+
             notificationManager.notify(1, notificationBuilder.build());
+
 
 
         }else{
